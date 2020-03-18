@@ -1,2 +1,2 @@
-# ajax-playground-abrateandrea
-ajax-playground-abrateandrea created by GitHub Classroom
+RandomUser
+RandomUser is a project created to generate random informations about people that can be used in a database
