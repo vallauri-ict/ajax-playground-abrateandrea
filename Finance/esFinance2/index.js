@@ -17,7 +17,7 @@ $(document).ready(function () {
 });
 
 function getGlobalQuotes(symbol) {
-    let url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=QV9HZZOUY4YF9IF4";
+    let url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=KCD28HHJSQ0HBBDD";
     $.getJSON(url, function (data) {
             let globalQuoteData = data["Global Quote"];
             createHeadTableCmb(globalQuoteData);
@@ -38,7 +38,7 @@ function getGlobalQuotes(symbol) {
 
 function getSymbolSearch(str) {
     if (str.length >= 2) {
-        let url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + str + "&apikey=QV9HZZOUY4YF9IF4";
+        let url = "https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + str + "&apikey=KCD28HHJSQ0HBBDD";
         $.getJSON(url, function (data) {
                 let bestMatches = data["bestMatches"];
                 if (bestMatches.length == 0) {

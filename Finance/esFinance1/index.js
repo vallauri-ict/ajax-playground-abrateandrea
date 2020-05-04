@@ -9,7 +9,7 @@ $(document).ready(function () {
 })
 
 function getGlobalQuotes(symbol) {
-    let url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=QV9HZZOUY4YF9IF4"
+    let url = "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=" + symbol + "&apikey=KCD28HHJSQ0HBBDD"
     $.getJSON(url, function (data) {
             let globalQuote = data["Global Quote"]
             $("#symbol").text(globalQuote["01. symbol"])
