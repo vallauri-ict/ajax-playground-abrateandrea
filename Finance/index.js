@@ -1,15 +1,15 @@
 $(document).ready(function () {
     let _symbol=$("#_symbol");
     let _search=$("#txtSearch");
-    let _comboChart=$("#comboChart");
+    let _cmbChart=$("#comboChart");
     let myChart;
     let _btnDownload;
     let _btnDrive=null;
-    let _chartCont=$("#chartContainer");
-    let ctx = document.getElementById('myChart').getContext('2d');
+    let _contChart=$("#chartContainer");
+    let contenxt = document.getElementById('myChart').getContext('2d');
     
     _symbol.prop("selectedIndex","-1");
-    _comboChart.prop("selectedIndex","2");
+    _cmbChart.prop("selectedIndex","2");
     _search.prop("value","");
     _symbol.on("change", function(){
         getGlobalQuotes(this.value)
@@ -19,13 +19,13 @@ $(document).ready(function () {
             getSymbolSearch(this.value);
         }
     });
-    _comboChart.on("change",function(){
+    _cmbChart.on("change",function(){
         chartGenerator(this.value);
     })
     $.getJSON("https://www.alphavantage.co/query?function=SECTOR&apikey=KCD28HHJSQ0HBBDD", function (data) {
        for(let key in data){
            if(key!="Meta Data")
-            $("<option>").text(key).prop("value",key).appendTo(_comboChart);
+            $("<option>").text(key).prop("value",key).appendTo(_cmbChart);
        }
 })
 
@@ -61,15 +61,16 @@ function getSymbolSearch(keywords){
             })
     }
     catch {
-        alert("Numero massimo di richieste al minuto raggiunte");
+        alert("Numero massimo di richieste raggiunte");
     }
 }
 
 function chartGenerator(choice){
     if(_btnDownload==null){
-        _btnDownload=$("<a>").prop({download:"ChartImage.jpg",class:"btn btn-primary float-right bg-flat-color-1"}).appendTo(_chartCont);
+        _btnDownload=$("<a>").prop({download:"ChartImage.jpg",class:"btn btn-primary float-right bg-flat-color-1",id:"btnDownload"}).appendTo(_contChart);
         $("<i>").addClass("fa fa-download").appendTo(_btnDownload);
-        _btnDrive=$("<a>").prop({class:"btn btn-primary float-right bg-flat-color-1"}).css({marginLeft:"70px!important;"}).appendTo(_chartCont);
+        _btnDownload.on('click', function(){ _btnDownload.prop("href", document.getElementById("myChart").toDataURL("image/jpg")); });
+        _btnDrive=$("<a>").prop({class:"btn btn-primary float-right bg-flat-color-1"}).css({marginLeft:"70px!important;"}).appendTo(_contChart);
         $("<i>").addClass("fab fa-google-drive").appendTo(_btnDrive);
     }
     if(myChart!=null){
@@ -81,12 +82,12 @@ function chartGenerator(choice){
             dataChart["data"]["labels"]=[];
             dataChart["data"]["datasets"]["data"]=[];
             let i=0;
-            dataChart["data"]["datasets"][0]["label"]="Valori percentuali";   
+            dataChart["data"]["datasets"][0]["label"]="Valori";   
             for(let key in dataSectors[choice]){
                 dataChart["data"]["labels"][i]=key;
                 dataChart["data"]["datasets"][0]["data"][i]=dataSectors[choice][key].substring(0,dataSectors[choice][key].length-2);
                 if(dataChart["data"]["datasets"][0]["data"][i]>0){
-                    dataChart["data"]["datasets"][0]["backgroundColor"][i]="rgba(0,255,0,0.5)";
+                    dataChart["data"]["datasets"][0]["backgroundColor"][i]="rgba(255,255,255,0.5)";
                     dataChart["data"]["datasets"][0]["borderColor"][i]="rgb(0,255,0)";
                 }
                 else{
@@ -95,11 +96,9 @@ function chartGenerator(choice){
                 }
                 i++;
             }
-            myChart = new Chart(ctx, dataChart);
-            setTimeout(download,200);
+            myChart = new Chart(contenxt, dataChart);
         })
-        
-        })
+    })
 }
 
 function inviaRichiesta(method, url, parameters = "", async = true) {
@@ -121,8 +120,4 @@ function tableHeadFill(array){
     for(let i=0; i<head.length;i++){
         $("<th>").addClass("cap").text(head[i].substr(3)).appendTo($("#head"))
     }
-}
-
-function download(){
-    _btnDownload.prop("href",myChart.toBase64Image());
 }

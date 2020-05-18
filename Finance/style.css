@@ -1,0 +1,50 @@
+@font-face {
+	font-family: 'GeosansLight';
+	src: url('./font/GeosansLight.eot');
+	src: local('GeosansLight'), url('./font/GeosansLight.woff') format('woff'), url('./font/GeosansLight.ttf') format('truetype');
+}
+
+html, body {
+  background-color: #18171c;
+  text-align: center;
+}
+
+#navbar {
+  width: 50%;
+  margin: 0 auto;
+  border-radius:5px;
+}
+
+.bg-primary {
+    background-color: lightgrey!important;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+}
+
+.table, th, td {
+  border: 2px solid white;
+}
+
+label{
+    font-weight: bold;
+    font-size:30pt;
+}
+
+h1{
+    font-family: 'GeosansLight';
+    color:white;
+    font-size:4em;
+}
+
+p{
+    font-family: 'GeosansLight';
+    color:black;
+    font-size:1.5em;
+}
+
+td{
+    color:white;
+}
