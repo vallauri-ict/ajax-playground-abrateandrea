@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Modifica Collezione</title>
+		<link rel="icon" href="icoVallauri.png" type="image/png" />
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"> </script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+		<script src="libreria.js"></script>
+		<script src="edit.js"></script>
+    </head>
+    <body style="background-image: url(img/sfondo1.jpg);">
+		<!-- Navbar section -->
+		<nav class="navbar navbar-expand-sm bg-dark" style="height:90px" id="navBar">
+			<div class="container-fluid">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="index.html">HOME</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="add.html">AGGIUNGI</a>
+					</li>
+					</ul>
+					<button type="button" class="btn btn-light float-right" id="logOut">Log out</button>
+			</div>
+		</nav>
+        <br>
+        <!-- Main content section -->
+		<div class="container-fluid" style="background-color: rgba(255, 255, 255, .70);" id="wrapper">
+            <h2 style="text-align:center;">Modifica i giochi della lista</h2>
+            <table class="table table-striped table-bordered" id="tBody">
+             <thead>
+                <tr>
+                 <th>Nome</th>
+                 <th>Produttore</th>
+                 <th>Piattaforma</th>
+                 <th>Anno</th>
+                </tr>
+             </thead>
+             <tbody>
+             </tbody>
+            </table>
+            <br>
+            <button type="button" class="btn btn-primary" id="annulla">Annulla</button>
+            <button type="button" class="btn btn-success float-right" id="edit">Modifica</button>
+            </div>
+            <div class="col-sm-2"></div>
+        <hr>
+	</body>
+</html>
