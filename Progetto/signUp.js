@@ -45,14 +45,13 @@ $(document).ready(function() {
 	   if (event.keyCode == 13)  
 		   controllaPsw();
 	});
-    
-    
+  
     function controllaPsw(){
         if(_pass.val()==_confPass.val())
         {
             _error2.hide();
             let aus=CryptoJS.MD5(_pass).toString();
-            let r=inviaRichiesta("POST","server/signUp.php",{"user":_user,"pass":aus});
+            let r=inviaRichiesta("POST","server/signUp.php",{"user":(_user.val()),"pass":aus});
             r.fail(function(jqXHR, test_status, str_error) {error(jqXHR, test_status, str_error);
             });
 
